@@ -1,17 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
+import { Provider } from 'react-redux';
+import App from './App';
+import store from './store';
+import { ToastContainer } from 'react-toastify';
+import './index.css';
+import 'react-toastify/dist/ReactToastify.css';
+const root = createRoot(document.getElementById('root'));
 
 root.render(
-  <BrowserRouter>
-    <>
-      <App />
-    </>
-  </BrowserRouter>
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+        <ToastContainer />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>,
 );
